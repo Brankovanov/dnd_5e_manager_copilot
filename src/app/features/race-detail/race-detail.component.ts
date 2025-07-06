@@ -25,6 +25,7 @@ export class RaceDetailComponent implements OnInit {
         this.error = null;
         this.http.get(`https://www.dnd5eapi.co/api/races/${index}`).subscribe({
           next: (data) => {
+            console.log(data)
             this.race = data;
             this.loading = false;
           },
