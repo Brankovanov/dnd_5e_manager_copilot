@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { DndApiCacheService } from '../../shared/dnd-api-cache.service';
 
 @Component({
   selector: 'app-race-detail',
@@ -14,7 +14,7 @@ export class RaceDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private dndApi: DndApiCacheService
   ) {}
 
   ngOnInit(): void {
@@ -23,9 +23,8 @@ export class RaceDetailComponent implements OnInit {
       if (index) {
         this.loading = true;
         this.error = null;
-        this.http.get(`https://www.dnd5eapi.co/api/races/${index}`).subscribe({
+        this.dndApi.get<any>(`https://www.dnd5eapi.co/api/races/${index}`).subscribe({
           next: (data) => {
-            console.log(data)
             this.race = data;
             this.loading = false;
           },

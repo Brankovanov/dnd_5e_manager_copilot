@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { DndApiCacheService } from '../../shared/dnd-api-cache.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +10,13 @@ export class NavbarComponent implements OnInit {
   races: any[] = [];
   classes: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private dndApi: DndApiCacheService) {}
 
   ngOnInit(): void {
-    this.http.get<any>('https://www.dnd5eapi.co/api/races').subscribe(res => {
+    this.dndApi.get<any>('https://www.dnd5eapi.co/api/races').subscribe(res => {
       this.races = res.results;
     });
-    this.http.get<any>('https://www.dnd5eapi.co/api/classes').subscribe(res => {
+    this.dndApi.get<any>('https://www.dnd5eapi.co/api/classes').subscribe(res => {
       this.classes = res.results;
     });
   }

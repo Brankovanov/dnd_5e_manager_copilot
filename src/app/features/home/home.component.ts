@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { DndApiCacheService } from '../../shared/dnd-api-cache.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +11,16 @@ export class HomeComponent implements OnInit {
   racesLoading = true;
   classesLoading = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(private dndApi: DndApiCacheService) {}
 
   ngOnInit(): void {
-    this.http.get<any>('https://www.dnd5eapi.co/api/races').subscribe(res => {
+    this.dndApi.get<any>('https://www.dnd5eapi.co/api/races').subscribe(res => {
       this.races = res.results;
       this.racesLoading = false;
     }, () => {
       this.racesLoading = false;
     });
-    this.http.get<any>('https://www.dnd5eapi.co/api/classes').subscribe(res => {
+    this.dndApi.get<any>('https://www.dnd5eapi.co/api/classes').subscribe(res => {
       this.classes = res.results;
       this.classesLoading = false;
     }, () => {

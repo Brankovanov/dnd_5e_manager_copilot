@@ -62,6 +62,44 @@
           </li>
         </ul>
       </div>
+
+      <!-- Class Levels Table -->
+      <div *ngIf="classLevels?.length">
+        <h2 class="dnd-section-title mt-6">Class Levels</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-yellow-50 border border-yellow-900 rounded shadow text-sm">
+            <thead>
+              <tr>
+                <th class="border border-yellow-900 px-2 py-1">Level</th>
+                <th class="border border-yellow-900 px-2 py-1">Proficiency Bonus</th>
+                <th class="border border-yellow-900 px-2 py-1">Features</th>
+                <th class="border border-yellow-900 px-2 py-1">Spellcasting</th>
+                <!-- Add more columns as needed -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lvl of classLevels">
+                <td class="border border-yellow-900 px-2 py-1 text-center">{{ lvl.level }}</td>
+                <td class="border border-yellow-900 px-2 py-1 text-center">{{ lvl.prof_bonus }}</td>
+                <td class="border border-yellow-900 px-2 py-1">
+                  <span *ngFor="let f of lvl.features; let last = last">
+                    {{ f.name }}<span *ngIf="!last">, </span>
+                  </span>
+                </td>
+                <td class="border border-yellow-900 px-2 py-1 text-center">
+                  <span *ngIf="lvl.spellcasting">
+                    <span *ngFor="let key of (lvl.spellcasting | keyvalue)">
+                      {{ key.key }}: {{ key.value }}<br>
+                    </span>
+                  </span>
+                  <span *ngIf="!lvl.spellcasting">-</span>
+                </td>
+                <!-- Add more cells as needed -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
