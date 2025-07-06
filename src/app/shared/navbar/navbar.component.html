@@ -1,0 +1,31 @@
+<nav class="dnd-bg dnd-border flex items-center gap-6 px-6 py-3 text-yellow-100 shadow-lg font-semibold w-full"
+     style="font-family: 'IM Fell English SC', serif; position: sticky; top: 0; z-index: 30;">
+  <a routerLink="/" routerLinkActive="font-bold" class="px-3 py-1 rounded hover:text-yellow-400 transition-colors dnd-label">Home</a>
+  <a routerLink="/create" routerLinkActive="font-bold" class="px-3 py-1 rounded hover:text-yellow-400 transition-colors dnd-label">Create Character</a>
+
+  <!-- Races Dropdown -->
+  <div class="relative group">
+    <button class="dnd-label px-3 py-1 rounded hover:bg-yellow-900 transition-colors focus:outline-none">
+      Races
+      <svg class="inline w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.293l3.71-4.06a.75.75 0 1 1 1.08 1.04l-4.25 4.65a.75.75 0 0 1-1.08 0l-4.25-4.65a.75.75 0 0 1 .02-1.06z"/></svg>
+    </button>
+    <ul class="absolute left-0 mt-2 w-44 bg-yellow-900/95 text-white rounded-lg shadow-lg border-2 border-yellow-700 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-20">
+      <li *ngFor="let race of races">
+        <a [routerLink]="['/races', race.index]" class="block px-4 py-2 hover:bg-yellow-800 hover:text-yellow-200 transition-colors">{{ race.name }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Classes Dropdown -->
+  <div class="relative group">
+    <button class="dnd-label px-3 py-1 rounded hover:bg-red-900 transition-colors focus:outline-none">
+      Classes
+      <svg class="inline w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.293l3.71-4.06a.75.75 0 1 1 1.08 1.04l-4.25 4.65a.75.75 0 0 1-1.08 0l-4.25-4.65a.75.75 0 0 1 .02-1.06z"/></svg>
+    </button>
+    <ul class="absolute left-0 mt-2 w-44 bg-red-900/95 text-white rounded-lg shadow-lg border-2 border-red-700 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-20">
+      <li *ngFor="let cls of classes">
+        <a [routerLink]="['/classes', cls.index]" class="block px-4 py-2 hover:bg-red-800 hover:text-yellow-200 transition-colors">{{ cls.name }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

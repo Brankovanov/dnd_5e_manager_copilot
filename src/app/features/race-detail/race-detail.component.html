@@ -1,0 +1,60 @@
+<div class="dnd-bg min-h-screen py-10 px-2">
+  <div class="max-w-2xl mx-auto dnd-border p-8 bg-white/80">
+    <div *ngIf="loading" class="text-center py-8 dnd-label">Loading...</div>
+    <div *ngIf="error" class="text-red-700 py-8 dnd-label">{{ error }}</div>
+
+    <div *ngIf="race && !loading && !error" class="space-y-4">
+      <h1 class="dnd-title text-3xl mb-4">{{ race.name }}</h1>
+      <p *ngIf="race.alignment"><span class="dnd-label">Alignment:</span> {{ race.alignment }}</p>
+      <p *ngIf="race.age"><span class="dnd-label">Age:</span> {{ race.age }}</p>
+      <p *ngIf="race.size"><span class="dnd-label">Size:</span> {{ race.size }} <span *ngIf="race.size_description">({{ race.size_description }})</span></p>
+      <p *ngIf="race.language_desc"><span class="dnd-label">Languages:</span> {{ race.language_desc }}</p>
+      <div *ngIf="race.speed"><span class="dnd-label">Speed:</span> {{ race.speed }}</div>
+
+      <div *ngIf="race.ability_bonuses?.length">
+        <span class="dnd-label">Ability Bonuses:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let ab of race.ability_bonuses">
+            {{ ab.ability_score.name }}: +{{ ab.bonus }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="race.starting_proficiencies?.length">
+        <span class="dnd-label">Starting Proficiencies:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let prof of race.starting_proficiencies">
+            {{ prof.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="race.languages?.length">
+        <span class="dnd-label">Languages:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let lang of race.languages">
+            {{ lang.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="race.traits?.length">
+        <span class="dnd-label">Traits:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let trait of race.traits">
+            {{ trait.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="race.subraces?.length">
+        <span class="dnd-label">Subraces:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let sub of race.subraces">
+            {{ sub.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

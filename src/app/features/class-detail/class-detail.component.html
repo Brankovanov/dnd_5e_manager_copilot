@@ -1,0 +1,67 @@
+<div class="dnd-bg min-h-screen py-10 px-2">
+  <div class="max-w-2xl mx-auto dnd-border p-8 bg-white/80">
+    <div *ngIf="loading" class="text-center py-8 dnd-label">Loading...</div>
+    <div *ngIf="error" class="text-red-700 py-8 dnd-label">{{ error }}</div>
+
+    <div *ngIf="classData && !loading && !error" class="space-y-4">
+      <h1 class="dnd-title text-3xl mb-4">{{ classData.name }}</h1>
+      <p *ngIf="classData.hit_die"><span class="dnd-label">Hit Die:</span> d{{ classData.hit_die }}</p>
+
+      <div *ngIf="classData.proficiency_choices?.length">
+        <span class="dnd-label">Proficiency Choices:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let choice of classData.proficiency_choices">
+            {{ choice.desc }}
+            <ul class="list-disc ml-6" *ngIf="choice.from?.length">
+              <li *ngFor="let prof of choice.from">
+                {{ prof.name || prof.item?.name }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="classData.proficiencies?.length">
+        <span class="dnd-label">Proficiencies:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let prof of classData.proficiencies">
+            {{ prof.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="classData.saving_throws?.length">
+        <span class="dnd-label">Saving Throws:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let save of classData.saving_throws">
+            {{ save.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="classData.starting_equipment?.length">
+        <span class="dnd-label">Starting Equipment:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let eq of classData.starting_equipment">
+            {{ eq.equipment.name }} <span *ngIf="eq.quantity">x{{ eq.quantity }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="classData.class_levels">
+        <a [href]="'https://www.dnd5eapi.co' + classData.class_levels" target="_blank" class="text-blue-700 underline dnd-label">
+          View Class Levels Details
+        </a>
+      </div>
+
+      <div *ngIf="classData.subclasses?.length">
+        <span class="dnd-label">Subclasses:</span>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let sub of classData.subclasses">
+            {{ sub.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="dnd-bg min-h-screen py-10 px-2">
+  <div class="max-w-3xl mx-auto dnd-border p-8 space-y-10 bg-white/80">
+    <h1 class="dnd-title text-4xl mb-6 text-center">Welcome to the D&D 5e Character App</h1>
+    <section>
+      <h2 class="dnd-section-title">Available Races</h2>
+      <div *ngIf="racesLoading" class="text-center py-4 dnd-label">Loading races...</div>
+      <ul *ngIf="!racesLoading" class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <li *ngFor="let race of races" class="flex justify-center items-center">
+          <a
+            [routerLink]="['/races', race.index]"
+            class="w-full text-center px-4 py-3 bg-yellow-100 text-yellow-900 rounded-lg border-2 border-yellow-700 hover:bg-yellow-200 transition-colors font-semibold shadow dnd-label"
+          >
+            {{ race.name }}
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2 class="dnd-section-title">Available Classes</h2>
+      <div *ngIf="classesLoading" class="text-center py-4 dnd-label">Loading classes...</div>
+      <ul *ngIf="!classesLoading" class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <li *ngFor="let cls of classes" class="flex justify-center items-center">
+          <a
+            [routerLink]="['/classes', cls.index]"
+            class="w-full text-center px-4 py-3 bg-red-100 text-red-900 rounded-lg border-2 border-red-700 hover:bg-red-200 transition-colors font-semibold shadow dnd-label"
+          >
+            {{ cls.name }}
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
