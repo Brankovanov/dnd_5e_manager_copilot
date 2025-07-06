@@ -1,27 +1,91 @@
-# Client
+# D&D 5e Character Creation and Management App (Client)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
+This is the Angular frontend for the D&D 5e Character Creation and Management App. It allows players to create, view, and manage their Dungeons & Dragons 5e characters, fetching reference data from the official [D&D 5e API](https://www.dnd5eapi.co/).
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Browse D&D 5e races and classes with details
+- Create a new character (name, race, class, background, stats, equipment, etc.)
+- Edit and update existing characters
+- Delete characters with confirmation
+- Data fetched dynamically from the 5e API
+- Responsive UI styled with TailwindCSS
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+1. Clone the repository and navigate to the `client` directory:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```sh
+   git clone <your-repo-url>
+   cd dnd_character_app/client
+   ```
 
-## Running end-to-end tests
+2. Install dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```sh
+   npm install
+   ```
 
-## Further help
+### Development Server
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run the development server:
+
+```sh
+ng serve
+```
+
+Navigate to [http://localhost:4200/](http://localhost:4200/). The app will reload if you change any source files.
+
+### Build
+
+To build the project for production:
+
+```sh
+ng build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+### Running Unit Tests
+
+Run unit tests via [Karma](https://karma-runner.github.io):
+
+```sh
+ng test
+```
+
+## Project Structure
+
+- `/src/app/features` – Feature modules and components (character, race, class, etc.)
+- `/src/app/shared` – Shared components (navbar, etc.)
+- `/src/app/layout` – Layout components
+- `/src/assets` – Static assets
+
+## Tech Stack
+
+- **Framework:** Angular 15+
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **Routing:** Angular Router
+- **Data Fetching:** Angular HttpClient
+- **API:** [D&D 5e API](https://www.dnd5eapi.co/)
+
+## Backend
+
+The backend is implemented in ASP.NET Core Web API (see `/server` directory in the root project).
+
+## Further Help
+
+- [Angular CLI Documentation](https://angular.io/cli)
+- [D&D 5e API Docs](https://www.dnd5eapi.co/docs/)
+
+---
+
+*This project is for educational and personal use. Dungeons & Dragons and all related terms are property of Wizards of the Coast.*
